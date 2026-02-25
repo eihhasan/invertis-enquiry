@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
 import './ApplyForm.css';
 
-const ApplyForm = ({ isCompact = false }) => {
+const ApplyForm = ({ isCompact = false, initialCourse = "" }) => {
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
         phone: '',
-        course: 'B.Tech',
+        course: initialCourse || 'B.Tech',
         details: '',
         message: ''
     });
+
+    // Update course if initialCourse prop changes (e.g. navigating between course pages)
+    React.useEffect(() => {
+        if (initialCourse) {
+            setFormData(prev => ({ ...prev, course: initialCourse }));
+        }
+    }, [initialCourse]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -74,11 +81,21 @@ const ApplyForm = ({ isCompact = false }) => {
                     </div>
                     <div className="form-group">
                         <label>Select Course</label>
-                        <select name="course" value={formData.course} onChange={handleChange}>
+                        <select
+                            name="course"
+                            value={formData.course}
+                            onChange={handleChange}
+                            disabled={!!initialCourse}
+                            style={initialCourse ? { backgroundColor: '#f0f0f0', cursor: 'not-allowed' } : {}}
+                        >
                             <option value="B.Tech">B.Tech</option>
+                            <option value="Bachelor of Technology (B.Tech)">B.Tech</option>
                             <option value="B.Pharma">B.Pharma</option>
+                            <option value="Bachelor of Pharmacy (B.Pharma)">B.Pharma</option>
                             <option value="MBA">MBA</option>
+                            <option value="Master of Business Administration (MBA)">MBA</option>
                             <option value="MCA">MCA</option>
+                            <option value="Master of Computer Applications (MCA)">MCA</option>
                         </select>
                     </div>
                     {!isCompact && (

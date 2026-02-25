@@ -75,7 +75,7 @@ const CourseDetail = () => {
                         </div>
                     </div>
                     <div className="hero-form-container">
-                        <ApplyForm isCompact={true} />
+                        <ApplyForm isCompact={true} initialCourse={course.name} />
                     </div>
                 </div>
             </header>
