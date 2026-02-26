@@ -171,6 +171,49 @@
     color: var(--text);
 }
 
+.section-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: -20px 0 24px;
+}
+
+.streams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+    gap: 12px;
+}
+
+.stream-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: var(--bg-soft);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 0.92rem;
+    color: var(--text);
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.stream-item:hover {
+    border-color: var(--primary);
+    background: #eef4ff;
+}
+
+.stream-item.active {
+    border-color: var(--primary);
+    background: #eef4ff;
+    box-shadow: 0 0 0 1px var(--primary);
+}
+
+.stream-dot {
+    color: var(--primary);
+    font-size: 0.65rem;
+    flex-shrink: 0;
+}
+
 /* Programme Structure Grid */
 .structure-grid {
     display: grid;

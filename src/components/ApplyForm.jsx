@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ApplyForm.css';
 
-const ApplyForm = ({ isCompact = false, initialCourse = "" }) => {
+const ApplyForm = ({ isCompact = false, initialCourse = "", specialization = "" }) => {
     const BASE_API_URL = import.meta.env.VITE_BASE_API_URL || 'https://crm-core-server.onrender.com/api/v1';
 
     const [formData, setFormData] = useState({
@@ -9,16 +9,19 @@ const ApplyForm = ({ isCompact = false, initialCourse = "" }) => {
         email: '',
         phone: '',
         course: initialCourse || 'B.Tech',
+        specialization: specialization || '',
     });
     const [isLoading, setIsLoading] = useState(false);
     const [status, setStatus] = useState(null); // 'success' | 'error' | null
 
-    // Update course if initialCourse prop changes (e.g. navigating between course pages)
+    // Update course and specialization if props change
     React.useEffect(() => {
-        if (initialCourse) {
-            setFormData(prev => ({ ...prev, course: initialCourse }));
-        }
-    }, [initialCourse]);
+        setFormData(prev => ({
+            ...prev,
+            course: initialCourse || prev.course,
+            specialization: specialization || prev.specialization
+        }));
+    }, [initialCourse, specialization]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -35,6 +38,7 @@ const ApplyForm = ({ isCompact = false, initialCourse = "" }) => {
             email: formData.email,
             phone: formData.phone,
             course: formData.course,
+            specialization: formData.specialization,
             source: 'Website',
         };
 
@@ -55,8 +59,8 @@ const ApplyForm = ({ isCompact = false, initialCourse = "" }) => {
                 email: '',
                 phone: '',
                 course: initialCourse || 'B.Tech',
+                specialization: specialization || '',
             });
-            setStatus('success');
         } catch (err) {
             console.error('Lead submission failed:', err);
             setStatus('error');
@@ -125,14 +129,32 @@ const ApplyForm = ({ isCompact = false, initialCourse = "" }) => {
                             value={formData.course}
                             onChange={handleChange}
                             disabled={!!initialCourse}
-                            style={initialCourse ? { backgroundColor: '#f0f0f0', cursor: 'not-allowed' } : {}}
+                            style={initialCourse ? { backgroundColor: '#f9f9f9', cursor: 'not-allowed' } : {}}
                         >
                             <option value="B.Tech">B.Tech</option>
                             <option value="B.Pharma">B.Pharma</option>
+                            <option value="BBA">BBA</option>
+                            <option value="BCA">BCA</option>
                             <option value="MBA">MBA</option>
                             <option value="MCA">MCA</option>
+                            <option value="Polytechnic">Polytechnic (Diploma)</option>
+                            <option value="D.Pharma">D.Pharma</option>
+                            <option value="Ph.D">Ph.D</option>
                         </select>
                     </div>
+                    {/* Only show specialization if it's broad or selected */}
+                    {(formData.specialization || isCompact) && (
+                        <div className="form-group full-width">
+                            <label>Specialization / Stream</label>
+                            <input
+                                type="text"
+                                name="specialization"
+                                value={formData.specialization}
+                                onChange={handleChange}
+                                placeholder="Preferred Specialization (optional)"
+                            />
+                        </div>
+                    )}
                 </div>
                 <button
                     type="submit"

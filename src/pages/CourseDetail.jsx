@@ -22,6 +22,17 @@ const courseData = {
         ],
         fee: '₹1,20,000 per year',
         image: '/btech.png',
+        streams: [
+            'Computer Science & Engineering (CSE)',
+            'CSE – Artificial Intelligence & ML',
+            'CSE – Cloud Computing & Cyber Security',
+            'CSE – Internet of Things (IoT)',
+            'Electrical Engineering',
+            'Mechanical Engineering',
+            'Electronics & Communication Engineering',
+            'Civil Engineering',
+            'Biotechnology',
+        ],
         syllabus: ['Data Structures & Algorithms', 'Operating Systems', 'Database Management', 'Artificial Intelligence', 'Software Engineering'],
         programme_structure: [
             { year: 'Year 1', subjects: ['Engineering Mathematics', 'Physics', 'Programming for Problem Solving', 'Workshop Practices'] },
@@ -48,6 +59,9 @@ const courseData = {
         ],
         fee: '₹1,10,000 per year',
         image: '/bpharma.png',
+        streams: [
+            'Bachelor of Pharmacy (B.Pharma) – General',
+        ],
         syllabus: ['Pharmaceutics', 'Pharmaceutical Chemistry', 'Pharmacology', 'Pharmacognosy', 'Hospital Pharmacy'],
         programme_structure: [
             { year: 'Year 1', subjects: ['Human Anatomy', 'Pharmaceutics I', 'Inorganic Chemistry', 'Remedial Biology'] },
@@ -74,6 +88,12 @@ const courseData = {
         ],
         fee: '₹60,000 per year',
         image: '/bba.jpg',
+        streams: [
+            'BBA – General Business Administration',
+            'BBA – Finance',
+            'BBA – Marketing',
+            'BBA – Tourism Management',
+        ],
         syllabus: ['Principles of Management', 'Business Economics', 'Financial Accounting', 'Marketing Management', 'Organizational Behavior'],
         programme_structure: [
             { year: 'Year 1', subjects: ['Management Ethics', 'Business Communication', 'Macro Economics', 'Accounting'] },
@@ -99,6 +119,12 @@ const courseData = {
         ],
         fee: '₹55,000 per year',
         image: '/bca.jpg',
+        streams: [
+            'BCA – General Computer Applications',
+            'BCA – Artificial Intelligence',
+            'BCA – Internet of Things (IoT)',
+            'BCA – Cloud Computing & Cyber Security',
+        ],
         syllabus: ['C/C++ Programming', 'Web Technologies', 'Java & Python', 'Networking', 'Cyber Security'],
         programme_structure: [
             { year: 'Year 1', subjects: ['Computer Fundamentals', 'C Programming', 'Mathematics I', 'Communication Skills'] },
@@ -125,6 +151,18 @@ const courseData = {
         ],
         fee: '₹1,40,000 per year',
         image: '/mba.png',
+        streams: [
+            'MBA – Marketing',
+            'MBA – Finance',
+            'MBA – Human Resources (HR)',
+            'MBA – Information Technology (IT)',
+            'MBA – International Business',
+            'MBA – Healthcare & Hospital Management',
+            'MBA – Digital Marketing',
+            'MBA – Rural & Agribusiness Management',
+            'MBA – Business Analytics',
+            'MBA – Fintech with AI',
+        ],
         syllabus: ['Strategic Management', 'International Business', 'Digital Marketing', 'Consumer Behavior', 'Supply Chain Management'],
         programme_structure: [
             { year: 'Year 1', subjects: ['Managerial Economics', 'Stats for Management', 'Corporate Finance', 'Global Business'] },
@@ -149,6 +187,12 @@ const courseData = {
         ],
         fee: '₹90,000 per year',
         image: '/mca.jpg',
+        streams: [
+            'MCA – General Computer Applications',
+            'MCA – Artificial Intelligence & ML',
+            'MCA – Cloud Computing',
+            'MCA – Cyber Security',
+        ],
         syllabus: ['Advanced Java', 'Cloud Computing', 'Big Data Analytics', 'Mobile App Dev', 'Machine Learning'],
         programme_structure: [
             { year: 'Year 1', subjects: ['Advanced Data Structures', 'Computer Networks', 'Software Project Management', 'Cloud Fundamentals'] },
@@ -174,6 +218,12 @@ const courseData = {
         ],
         fee: '₹45,000 per year',
         image: '/polytechnic.jpg',
+        streams: [
+            'Diploma – Computer Science & Engineering',
+            'Diploma – Mechanical Engineering',
+            'Diploma – Civil Engineering',
+            'Diploma – Electrical Engineering',
+        ],
         syllabus: ['Applied Physics/Maths', 'Basic Engineering Drawing', 'Subject-specific Labs', 'Industrial Training'],
         programme_structure: [
             { year: 'Year 1', subjects: ['Applied Science', 'Engineering Drawing', 'Basic Workshop', 'Intro to IT'] },
@@ -199,6 +249,9 @@ const courseData = {
         ],
         fee: '₹65,000 per year',
         image: '/dpharma.jpg',
+        streams: [
+            'D.Pharma – General Pharmacy',
+        ],
         syllabus: ['Pharmacognosy', 'Pharmaceutical Jurisprudence', 'Health Education', 'Drug Store Management'],
         programme_structure: [
             { year: 'Year 1', subjects: ['Pharmaceutics I', 'Chemistry I', 'Pharmacognosy', 'Biochemistry'] },
@@ -224,6 +277,12 @@ const courseData = {
         ],
         fee: '₹50,000 per annum',
         image: '/phd.jpg',
+        streams: [
+            'Ph.D – Engineering & Technology',
+            'Ph.D – Pharmaceutical Sciences',
+            'Ph.D – Management & Commerce',
+            'Ph.D – Sciences (Physics, Chemistry, Maths)',
+        ],
         syllabus: ['Research Methodology', 'Subject specialization', 'Thesis writing', 'Industrial collaboration research'],
         programme_structure: [
             { year: 'Course Work', subjects: ['Research Methodology', 'Review of Literature', 'Computer Applications', 'Ethics'] },
@@ -238,6 +297,7 @@ const courseData = {
 const CourseDetail = () => {
     const { courseId } = useParams();
     const course = courseData[courseId.toLowerCase()];
+    const [selectedStream, setSelectedStream] = React.useState('');
 
     if (!course) {
         return <div className="container section text-center">
@@ -245,6 +305,28 @@ const CourseDetail = () => {
             <Link to="/" className="btn btn-primary mt-20">Browse All Courses</Link>
         </div>;
     }
+
+    const handleStreamClick = (stream) => {
+        setSelectedStream(stream);
+        // Smooth scroll to form
+        const formElement = document.getElementById('enquiry-form');
+        if (formElement) {
+            formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    };
+
+    // Mapping course IDs to the display names used in the form select
+    const courseFormMapping = {
+        'btech': 'B.Tech',
+        'bpharm': 'B.Pharma',
+        'bba': 'BBA',
+        'bca': 'BCA',
+        'mba': 'MBA',
+        'mca': 'MCA',
+        'polytechnic': 'Polytechnic',
+        'dpharm': 'D.Pharma',
+        'phd': 'Ph.D'
+    };
 
     return (
         <div className="course-detail-page">
@@ -269,8 +351,12 @@ const CourseDetail = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="hero-form-container">
-                        <ApplyForm isCompact={true} initialCourse={course.name} />
+                    <div className="hero-form-container" id="enquiry-form">
+                        <ApplyForm
+                            isCompact={true}
+                            initialCourse={courseFormMapping[courseId.toLowerCase()] || 'B.Tech'}
+                            specialization={selectedStream}
+                        />
                     </div>
                 </div>
             </header>
@@ -281,6 +367,26 @@ const CourseDetail = () => {
                     <div className="details-layout">
                         {/* Left Column: Extensive Info */}
                         <div className="details-left">
+
+                            {/* Streams / Specializations */}
+                            {course.streams && course.streams.length > 0 && (
+                                <div className="content-block">
+                                    <h2 className="section-title">Available Streams & Specializations</h2>
+                                    <p className="section-subtitle">Select a stream to enquire specifically</p>
+                                    <div className="streams-grid">
+                                        {course.streams.map((stream, idx) => (
+                                            <div
+                                                key={idx}
+                                                className={`stream-item ${selectedStream === stream ? 'active' : ''}`}
+                                                onClick={() => handleStreamClick(stream)}
+                                            >
+                                                <span className="stream-dot">●</span>
+                                                <span>{stream}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
 
                             {/* Eligibility Section */}
                             <div className="content-block">
