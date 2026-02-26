@@ -94,6 +94,9 @@
     border-radius: var(--radius);
     border: 1px solid var(--border);
     margin-bottom: 30px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    overflow: hidden;
 }
 
 .section-title {
@@ -171,7 +174,7 @@
 /* Programme Structure Grid */
 .structure-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
     gap: 25px;
 }
 
@@ -320,6 +323,9 @@
 
     .details-sidebar {
         position: static;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+        gap: 20px;
     }
 
     .hero-container {
@@ -344,9 +350,14 @@
         text-align: center;
     }
 
+    .hero-text-content h1 {
+        font-size: 2.5rem;
+    }
+
     .hero-description {
         margin: 0 auto 30px;
         max-width: 90%;
+        font-size: 1.05rem;
     }
 
     .hero-stats {
@@ -367,8 +378,30 @@
 
 
 @media (max-width: 768px) {
+    .course-hero {
+        padding: 90px 0 50px;
+    }
+
+    .hero-text-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+        margin-bottom: 24px;
+    }
+
+    .hero-text-content .breadcrumb {
+        font-size: 0.82rem;
+    }
+
     .content-block {
-        padding: 25px 20px;
+        padding: 25px 18px;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
     }
 
     .opportunities-list {
@@ -393,9 +426,76 @@
     .course-details-main {
         padding: 40px 0;
     }
+
+    .details-layout {
+        gap: 20px;
+    }
+
+    .details-sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar-card {
+        padding: 22px 16px;
+    }
+
+    .sidebar-card .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        padding: 12px 16px;
+    }
+
+    .eligibility-box {
+        padding: 18px;
+    }
+
+    .career-desc {
+        font-size: 0.95rem;
+    }
+
+    .syllabus-tags {
+        gap: 8px;
+    }
+
+    .syllabus-tag {
+        padding: 8px 14px;
+        font-size: 0.84rem;
+    }
+
+    .year-box {
+        padding: 20px;
+    }
+
+    .year-box h4 {
+        font-size: 1.05rem;
+    }
+
+    .opportunity-item {
+        padding: 12px;
+        font-size: 0.88rem;
+    }
+
+    .highlights-card ul li {
+        font-size: 0.88rem;
+        padding: 10px 0;
+    }
 }
 
 @media (max-width: 480px) {
+    .course-hero {
+        padding: 80px 0 40px;
+    }
+
+    .hero-text-content h1 {
+        font-size: 1.7rem;
+    }
+
+    .hero-description {
+        font-size: 0.9rem;
+    }
+
     .hero-stats {
         flex-direction: column;
         align-items: stretch;
@@ -405,20 +505,35 @@
     .stat-item {
         width: 100%;
         justify-content: center;
+        padding: 8px 14px;
+        font-size: 0.85rem;
+    }
+
+    .hero-form-container {
+        padding: 6px;
+        border-radius: 14px;
+    }
+
+    .section-title {
+        font-size: 1.25rem;
+    }
+
+    .content-block {
+        padding: 20px 14px;
     }
 
     .opportunity-item {
         flex-direction: column;
         text-align: center;
-        padding: 20px;
+        padding: 16px;
     }
 
     .sidebar-card {
-        padding: 20px 15px;
+        padding: 18px 14px;
     }
 
     .fee-value {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .syllabus-tags {
@@ -426,7 +541,19 @@
     }
 
     .syllabus-tag {
-        padding: 8px 16px;
-        font-size: 0.85rem;
+        padding: 8px 14px;
+        font-size: 0.82rem;
+    }
+
+    .year-box {
+        padding: 18px;
+    }
+
+    .main-eligibility {
+        font-size: 1rem;
+    }
+
+    .step-text {
+        font-size: 0.9rem;
     }
 }

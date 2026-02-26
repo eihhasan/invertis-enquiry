@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './ApplyForm.css';
 
 const ApplyForm = ({ isCompact = false, initialCourse = "" }) => {
+    const BASE_API_URL = import.meta.env.VITE_BASE_API_URL || 'https://crm-core-server.onrender.com/api/v1';
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -29,14 +31,15 @@ const ApplyForm = ({ isCompact = false, initialCourse = "" }) => {
         setStatus(null);
 
         const payload = {
-            name: formData.fullName,
+            name: formData.name,
             email: formData.email,
             phone: formData.phone,
             course: formData.course,
+            source: 'Website',
         };
 
         try {
-            const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/create-lead`, {
+            const response = await fetch(`${BASE_API_URL}/create-lead`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload),
@@ -48,11 +51,12 @@ const ApplyForm = ({ isCompact = false, initialCourse = "" }) => {
 
             setStatus('success');
             setFormData({
-                fullName: '',
+                name: '',
                 email: '',
                 phone: '',
                 course: initialCourse || 'B.Tech',
             });
+            setStatus('success');
         } catch (err) {
             console.error('Lead submission failed:', err);
             setStatus('error');
@@ -152,4 +156,4 @@ const ApplyForm = ({ isCompact = false, initialCourse = "" }) => {
     );
 };
 
-export default ApplyForm;
+export default ApplyForm; 

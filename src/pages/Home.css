@@ -168,15 +168,24 @@
 }
 
 @media (max-width: 992px) {
+    .home-hero {
+        padding: 100px 0 60px;
+    }
+
     .hero-container {
         grid-template-columns: 1fr;
         gap: 40px;
         text-align: center;
     }
 
+    .hero-text-content h1 {
+        font-size: 2.5rem;
+    }
+
     .hero-description {
         margin-left: auto;
         margin-right: auto;
+        font-size: 1.05rem;
     }
 
     .hero-btns {
@@ -187,16 +196,29 @@
         max-width: 500px;
         margin: 0 auto;
     }
+
+    .courses-section h2,
+    .why-section h2,
+    .about-short h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
 }
 
 @media (max-width: 768px) {
     .home-hero {
         min-height: auto;
-        padding: 80px 0 60px;
+        padding: 90px 0 50px;
     }
 
     .hero-text-content h1 {
-        margin-bottom: 20px;
+        font-size: 2rem;
+        margin-bottom: 18px;
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+        margin-bottom: 24px;
     }
 
     .hero-btns {
@@ -215,8 +237,19 @@
     }
 
     .why-grid {
-        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
-        gap: 20px;
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .courses-section h2,
+    .why-section h2,
+    .about-short h2 {
+        font-size: 1.7rem;
+        margin-bottom: 24px;
+    }
+
+    .about-short p {
+        font-size: 0.95rem;
     }
 
     .about-short,
@@ -226,15 +259,47 @@
 }
 
 @media (max-width: 480px) {
+    .home-hero {
+        padding: 80px 0 40px;
+    }
+
+    .hero-text-content h1 {
+        font-size: 1.7rem;
+    }
+
+    .hero-description {
+        font-size: 0.88rem;
+    }
+
     .hero-form-container {
-        padding: 20px;
+        padding: 8px;
+        border-radius: 14px;
+    }
+
+    .hero-btns .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
     }
 
     .course-card {
-        padding: 24px;
+        padding: 22px;
+    }
+
+    .course-card h3 {
+        font-size: 1.2rem;
     }
 
     .why-item {
-        padding: 24px;
+        padding: 22px;
+    }
+
+    .why-item h4 {
+        font-size: 1.05rem;
+    }
+
+    .courses-section h2,
+    .why-section h2,
+    .about-short h2 {
+        font-size: 1.5rem;
     }
 }
