@@ -2,7 +2,7 @@
     position: relative;
     background-size: cover;
     background-position: center;
-    padding: 0;
+    padding: 120px 0 80px;
     min-height: 650px;
     display: flex;
     align-items: center;
@@ -174,10 +174,6 @@
         text-align: center;
     }
 
-    .hero-text-content h1 {
-        font-size: 2.8rem;
-    }
-
     .hero-description {
         margin-left: auto;
         margin-right: auto;
@@ -191,27 +187,21 @@
         max-width: 500px;
         margin: 0 auto;
     }
-
-    .about-short h2,
-    .courses-section h2,
-    .why-section h2 {
-        font-size: 2rem;
-    }
 }
 
 @media (max-width: 768px) {
     .home-hero {
         min-height: auto;
-        padding: 60px 0;
+        padding: 80px 0 60px;
     }
 
     .hero-text-content h1 {
-        font-size: 2.2rem;
+        margin-bottom: 20px;
     }
 
     .hero-btns {
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
     }
 
     .hero-btns .btn {
@@ -220,8 +210,8 @@
     }
 
     .courses-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
 
     .why-grid {
@@ -231,16 +221,20 @@
 
     .about-short,
     .section {
-        padding: 50px 0;
+        padding: 40px 0;
     }
 }
 
 @media (max-width: 480px) {
-    .hero-text-content h1 {
-        font-size: 1.8rem;
-    }
-
     .hero-form-container {
         padding: 20px;
+    }
+
+    .course-card {
+        padding: 24px;
+    }
+
+    .why-item {
+        padding: 24px;
     }
 }

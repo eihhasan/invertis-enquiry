@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight, GraduationCap, Building2, Users, Briefcase } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import ApplyForm from '../components/ApplyForm';
+
 import './Home.css';
 
 const Home = () => {
@@ -22,9 +22,7 @@ const Home = () => {
                             <a href="#apply-now" className="btn btn-outline" style={{ color: 'white', borderColor: 'white' }}>Learn More</a>
                         </div>
                     </div>
-                    <div className="hero-form-container">
-                        <ApplyForm isCompact={true} />
-                    </div>
+
                 </div>
             </header>
 
@@ -51,9 +49,14 @@ const Home = () => {
                             link="/courses/btech"
                         />
                         <CourseCard
+                            name="BBA"
+                            desc="Foundational management program for future business leaders and entrepreneurs."
+                            link="/courses/bba"
+                        />
+                        <CourseCard
                             name="B.Pharma"
                             desc="Comprehensive undergraduate program in pharmaceutical sciences and healthcare."
-                            link="/courses/bpharma"
+                            link="/courses/bpharm"
                         />
                         <CourseCard
                             name="MBA"
@@ -61,9 +64,14 @@ const Home = () => {
                             link="/courses/mba"
                         />
                         <CourseCard
-                            name="MCA"
-                            desc="Master degree in computer applications for advanced IT and software careers."
-                            link="/courses/mca"
+                            name="Diploma (Poly)"
+                            desc="Technical diploma in engineering for practical skill development and junior roles."
+                            link="/courses/polytechnic"
+                        />
+                        <CourseCard
+                            name="Ph.D"
+                            desc="Research-based doctoral programs for advanced specialization and discovery."
+                            link="/courses/phd"
                         />
                     </div>
                 </div>
@@ -98,8 +106,7 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Apply Form Reusable */}
-            <ApplyForm />
+
         </div>
     );
 };

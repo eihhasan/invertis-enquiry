@@ -47,7 +47,7 @@ const About = () => {
                         </div>
                     </div>
                     <div className="about-image">
-                        <img src="https://images.unsplash.com/photo-1541339907198-e08756ebafe1?auto=format&fit=crop&q=80&w=800" alt="University Campus" />
+                        <img src="/camp.png" alt="University Campus" />
                     </div>
                 </div>
             </section>

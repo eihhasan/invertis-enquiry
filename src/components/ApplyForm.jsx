@@ -3,13 +3,13 @@ import './ApplyForm.css';
 
 const ApplyForm = ({ isCompact = false, initialCourse = "" }) => {
     const [formData, setFormData] = useState({
-        fullName: '',
+        name: '',
         email: '',
         phone: '',
         course: initialCourse || 'B.Tech',
-        details: '',
-        message: ''
     });
+    const [isLoading, setIsLoading] = useState(false);
+    const [status, setStatus] = useState(null); // 'success' | 'error' | null
 
     // Update course if initialCourse prop changes (e.g. navigating between course pages)
     React.useEffect(() => {
@@ -23,19 +23,42 @@ const ApplyForm = ({ isCompact = false, initialCourse = "" }) => {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Application Submitted:', formData);
-        alert('Thank you for applying! We will contact you soon.');
-        // Reset form
-        setFormData({
-            fullName: '',
-            email: '',
-            phone: '',
-            course: 'B.Tech',
-            details: '',
-            message: ''
-        });
+        setIsLoading(true);
+        setStatus(null);
+
+        const payload = {
+            name: formData.fullName,
+            email: formData.email,
+            phone: formData.phone,
+            course: formData.course,
+        };
+
+        try {
+            const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/create-lead`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
+            }
+
+            setStatus('success');
+            setFormData({
+                fullName: '',
+                email: '',
+                phone: '',
+                course: initialCourse || 'B.Tech',
+            });
+        } catch (err) {
+            console.error('Lead submission failed:', err);
+            setStatus('error');
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     const formContent = (
@@ -44,6 +67,18 @@ const ApplyForm = ({ isCompact = false, initialCourse = "" }) => {
                 <h2>{isCompact ? 'Enquiry Now' : 'Apply Now'}</h2>
                 <p>{isCompact ? 'Get course details instantly.' : 'Start your journey with us today. Fill the form below.'}</p>
             </div>
+
+            {status === 'success' && (
+                <div className="form-status success">
+                    ✅ Thank you! We will contact you soon.
+                </div>
+            )}
+            {status === 'error' && (
+                <div className="form-status error">
+                    ❌ Something went wrong. Please try again.
+                </div>
+            )}
+
             <form className="apply-form" onSubmit={handleSubmit}>
                 <div className="form-grid">
                     <div className="form-group">
@@ -94,34 +129,13 @@ const ApplyForm = ({ isCompact = false, initialCourse = "" }) => {
                             <option value="MCA">MCA</option>
                         </select>
                     </div>
-                    {!isCompact && (
-                        <>
-                            <div className="form-group full-width">
-                                <label>12th / Graduation Details</label>
-                                <input
-                                    type="text"
-                                    name="details"
-                                    value={formData.details}
-                                    onChange={handleChange}
-                                    placeholder="e.g. CBSE 12th - 85%"
-                                    required
-                                />
-                            </div>
-                            <div className="form-group full-width">
-                                <label>Message (Optional)</label>
-                                <textarea
-                                    name="message"
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                    placeholder="Your message here..."
-                                    rows="4"
-                                ></textarea>
-                            </div>
-                        </>
-                    )}
                 </div>
-                <button type="submit" className="btn btn-primary submit-btn">
-                    {isCompact ? 'Submit Enquiry' : 'Apply Now'}
+                <button
+                    type="submit"
+                    className="btn btn-primary submit-btn"
+                    disabled={isLoading}
+                >
+                    {isLoading ? 'Submitting...' : isCompact ? 'Submit Enquiry' : 'Apply Now'}
                 </button>
             </form>
         </div>

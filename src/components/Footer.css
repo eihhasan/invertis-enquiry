@@ -106,12 +106,13 @@
 @media (max-width: 992px) {
     .footer-grid {
         grid-template-columns: 1fr 1fr;
+        gap: 40px;
     }
 }
 
 @media (max-width: 768px) {
     .footer {
-        padding: 60px 0 20px;
+        padding: 50px 0 20px;
     }
 
     .footer-grid {
@@ -120,6 +121,12 @@
 
     .footer-desc {
         max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .footer-links h3,
+    .footer-contact h3 {
+        margin-bottom: 15px;
     }
 }
 
@@ -127,6 +134,7 @@
     .footer-grid {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 35px;
     }
 
     .footer-desc {
@@ -140,5 +148,10 @@
 
     .contact-list li {
         justify-content: center;
+        text-align: center;
+    }
+
+    .footer-bottom {
+        padding-top: 25px;
     }
 }

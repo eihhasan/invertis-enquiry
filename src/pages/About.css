@@ -98,28 +98,26 @@
 }
 
 @media (max-width: 992px) {
+    .page-header {
+        padding: 60px 0;
+    }
+
     .about-main-grid {
         grid-template-columns: 1fr;
         gap: 40px;
         text-align: center;
     }
 
-    .about-text h2 {
-        font-size: 2rem;
+    .stats-grid {
+        max-width: 500px;
+        margin: 40px auto 0;
     }
 }
 
 @media (max-width: 768px) {
     .vision-grid {
         grid-template-columns: 1fr;
-    }
-
-    .page-header {
-        padding: 60px 0;
-    }
-
-    .page-header h1 {
-        font-size: 2.2rem;
+        gap: 20px;
     }
 
     .stats-grid {
@@ -128,6 +126,7 @@
 
     .about-image {
         margin-top: 20px;
+        order: -1;
     }
 
     .vision-box {
@@ -136,11 +135,15 @@
 }
 
 @media (max-width: 480px) {
-    .page-header h1 {
-        font-size: 1.8rem;
+    .page-header {
+        padding: 50px 0;
     }
 
     .stat-card {
         padding: 20px;
+    }
+
+    .about-text p {
+        font-size: 1rem;
     }
 }

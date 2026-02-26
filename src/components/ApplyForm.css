@@ -69,6 +69,34 @@
     width: 100%;
     justify-content: center;
     padding: 15px;
+    transition: opacity 0.3s ease;
+}
+
+.submit-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.form-status {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-status.success {
+    background-color: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #6ee7b7;
+}
+
+.form-status.error {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
 }
 
 @media (max-width: 600px) {
@@ -98,11 +126,16 @@
 
 @media (max-width: 480px) {
     .apply-card.compact {
-        padding: 20px 15px;
+        padding: 20px 16px;
+        border-radius: 12px;
     }
 
     .apply-card.compact .apply-header h2 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+    }
+
+    .apply-card.compact .apply-header p {
+        font-size: 0.82rem;
     }
 }
 
