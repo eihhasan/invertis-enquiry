@@ -137,6 +137,7 @@
 
     .hero-stats {
         justify-content: center;
+        flex-wrap: wrap;
     }
 
     .hero-description {
@@ -148,9 +149,18 @@
         max-width: 500px;
         margin: 0 auto;
     }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
+    .course-hero {
+        min-height: auto;
+        padding: 60px 0;
+    }
+
     .hero-text-content h1 {
         font-size: 2.2rem;
     }
@@ -158,5 +168,27 @@
     .stat-item {
         padding: 8px 15px;
         font-size: 0.9rem;
+    }
+
+    .details-card,
+    .highlights-card {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .stat-item {
+        width: 100%;
+        justify-content: center;
     }
 }

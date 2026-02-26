@@ -62,3 +62,31 @@
     color: var(--text-muted);
     font-weight: 500;
 }
+
+@media (max-width: 768px) {
+    .contact-grid {
+        margin-bottom: 40px;
+    }
+
+    .contact-info-cards {
+        gap: 20px;
+    }
+
+    .contact-card {
+        padding: 30px 20px;
+    }
+
+    .contact-form-wrapper {
+        padding: 60px 0;
+    }
+
+    .map-placeholder {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-info-cards {
+        grid-template-columns: 1fr;
+    }
+}

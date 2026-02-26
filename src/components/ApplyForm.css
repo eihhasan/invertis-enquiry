@@ -83,6 +83,10 @@
     .apply-card {
         padding: 30px 20px;
     }
+
+    .apply-header h2 {
+        font-size: 1.8rem;
+    }
 }
 
 /* Compact Mode for Hero Overlay */
@@ -90,6 +94,16 @@
     border: none;
     box-shadow: none;
     padding: 30px;
+}
+
+@media (max-width: 480px) {
+    .apply-card.compact {
+        padding: 20px 15px;
+    }
+
+    .apply-card.compact .apply-header h2 {
+        font-size: 1.5rem;
+    }
 }
 
 .apply-card.compact .apply-header {
