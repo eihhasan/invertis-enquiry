@@ -120,6 +120,22 @@
     background: none;
 }
 
+.dropdown-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.dropdown-icon {
+    transition: transform 0.3s ease;
+}
+
+.dropdown-trigger:hover .dropdown-icon {
+    transform: translateY(2px);
+}
+
+/* ── MOBILE ── */
 @media (max-width: 992px) {
     .nav-links {
         position: fixed;
@@ -166,6 +182,20 @@
 
     .dropdown {
         width: 100%;
+        cursor: pointer;
+    }
+
+    .dropdown-trigger {
+        cursor: pointer;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* --- KEY FIX: reset desktop hover styles on mobile --- */
+    .dropdown:hover .dropdown-content {
+        opacity: 0;
+        visibility: hidden;
+        transform: none;
     }
 
     .dropdown-content {
@@ -184,12 +214,18 @@
         min-width: 100%;
     }
 
-    .dropdown:hover .dropdown-content {
+    /* --- KEY FIX: only open via JS class, not hover --- */
+    .dropdown.mobile-open .dropdown-content {
         opacity: 1;
         visibility: visible;
         max-height: 1000px;
         padding: 10px 20px;
         margin-top: 5px;
+        pointer-events: auto;
+    }
+
+    .dropdown-icon.rotated {
+        transform: rotate(180deg);
     }
 
     .dropdown-section {
@@ -227,20 +263,4 @@
     .nav-links {
         width: 100%;
     }
-}
-
-.dropdown-trigger {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    cursor: pointer;
-}
-
-.dropdown-icon {
-    transition: transform 0.3s ease;
-}
-
-.dropdown-trigger:hover .dropdown-icon {
-    transform: translateY(2px);
-    /* or rotate(180deg) to flip */
 }

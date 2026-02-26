@@ -9,8 +9,8 @@
 }
 
 .apply-header {
-    text-align: center;
-    margin-bottom: 40px;
+    text-align: left;
+    margin-bottom: 24px;
 }
 
 .apply-header h2 {
@@ -41,9 +41,10 @@
 }
 
 .form-group label {
-    font-weight: 500;
-    font-size: 0.9rem;
+    font-weight: 600;
+    font-size: 0.875rem;
     color: var(--text);
+    text-align: left;
 }
 
 .form-group input,
@@ -109,7 +110,9 @@
     }
 
     .apply-card {
-        padding: 30px 20px;
+        padding: 30px 16px;
+        width: 100%;
+        max-width: 100%;
     }
 
     .apply-header h2 {
@@ -140,7 +143,7 @@
 }
 
 .apply-card.compact .apply-header {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     text-align: left;
 }
 

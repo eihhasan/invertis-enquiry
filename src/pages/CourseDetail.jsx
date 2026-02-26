@@ -21,7 +21,7 @@ const courseData = {
             'Document verification and fee submission.'
         ],
         fee: '₹1,20,000 per year',
-        image: '/btech.jpg',
+        image: '/btech.png',
         syllabus: ['Data Structures & Algorithms', 'Operating Systems', 'Database Management', 'Artificial Intelligence', 'Software Engineering'],
         programme_structure: [
             { year: 'Year 1', subjects: ['Engineering Mathematics', 'Physics', 'Programming for Problem Solving', 'Workshop Practices'] },
@@ -47,7 +47,7 @@ const courseData = {
             'Final interview and admission confirmation.'
         ],
         fee: '₹1,10,000 per year',
-        image: '/bpharma.jpg',
+        image: '/bpharma.png',
         syllabus: ['Pharmaceutics', 'Pharmaceutical Chemistry', 'Pharmacology', 'Pharmacognosy', 'Hospital Pharmacy'],
         programme_structure: [
             { year: 'Year 1', subjects: ['Human Anatomy', 'Pharmaceutics I', 'Inorganic Chemistry', 'Remedial Biology'] },
@@ -124,7 +124,7 @@ const courseData = {
             'Final selection and fee installment.'
         ],
         fee: '₹1,40,000 per year',
-        image: '/mba.jpg',
+        image: '/mba.png',
         syllabus: ['Strategic Management', 'International Business', 'Digital Marketing', 'Consumer Behavior', 'Supply Chain Management'],
         programme_structure: [
             { year: 'Year 1', subjects: ['Managerial Economics', 'Stats for Management', 'Corporate Finance', 'Global Business'] },

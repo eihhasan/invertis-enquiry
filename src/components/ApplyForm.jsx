@@ -89,8 +89,8 @@ const ApplyForm = ({ isCompact = false, initialCourse = "" }) => {
                         <label>Full Name</label>
                         <input
                             type="text"
-                            name="fullName"
-                            value={formData.fullName}
+                            name="name"
+                            value={formData.name}
                             onChange={handleChange}
                             placeholder="Enter your full name"
                             required
